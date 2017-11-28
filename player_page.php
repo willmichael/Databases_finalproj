@@ -18,8 +18,8 @@
   <body>
 
     <!--MARK NAVIGATION-->
+
      <?php include("./nav.html");?>
-    
 
     <!--MARK CONTENT-->
 
@@ -27,42 +27,41 @@
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
         <div class="container">
-          <h1 class="display-4">Teams</h1>
+            <?php
+            // change the value of $dbuser and $dbpass to your username and password
+                include 'connectvarsEECS.php';
+
+                $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+                if (!$conn) {
+                    die('Could not connect: ' . mysql_error());
+                }
+
+            // get call to team page
+                $player = mysqli_real_escape_string($conn, $_GET['playerName']);
+
+            // Display team name up top
+                echo "<h1 class='display-3'>$player</h1>";
+
+            // check unique username
+                $query = "SELECT playerID, playerName, bio, dob, rating, specialty FROM Player WHERE playerName='$player'";
+                $result = mysqli_query($conn, $query);
+                $count = mysqli_num_rows( $result );
+
+                if ($count == 1) {
+                // attempt validate password
+                    $row = mysqli_fetch_row($result);
+                    echo $row[0] . $row[1] . $row[2]. $row[3]. $row[4]. $row[5];
+                }
+                else {
+                    echo "Could not find matching player, sorry";
+                }
+
+            // close connection
+            mysqli_close($conn);
+            ?>
         </div>
       </div>
 
-    <?php
-    // change the value of $dbuser and $dbpass to your username and password
-        include 'connectvarsEECS.php';
-
-        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-        if (!$conn) {
-            die('Could not connect: ' . mysql_error());
-        }
-    // Retrieve name of table selected
-
-        $query = "SELECT teamName, rating FROM Team ";
-
-        $result = mysqli_query($conn, $query);
-        if (!$result) {
-            die("Query to show fields from table failed");
-        }
-    // setup structure
-        echo "<div class='container'>";
-
-        while($row = mysqli_fetch_row($result)) {
-            echo "<div class='row'>";
-            echo "Team Name: " . $row[0];
-            echo "Rating: " . $row[1];
-            echo "<p><a class='btn btn-secondary' href='team_page.php?teamName=$row[0]' role='button'>View details &raquo;</a></p>";
-            echo "</div>";
-        }
-
-        echo "</div> <!-- /container -->";
-
-        mysqli_free_result($result);
-        mysqli_close($conn);
-    ?>
     </main>
 
     <footer class="container">
