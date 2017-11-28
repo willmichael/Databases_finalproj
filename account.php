@@ -1,3 +1,6 @@
+<?php
+include('session.php');
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -27,7 +30,9 @@
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
         <div class="container">
-          <h1 class="display-3">Account</h1>
+          <?php
+            echo "<h1 class='display-3'>Welcome $user!</h1>";
+          ?>
           <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
           <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
         </div>
@@ -37,14 +42,54 @@
         <!-- Example row of columns -->
         <div class="row">
           <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            <h2>Following Players</h2>
+               <?php
+                   $player_query = "select playerName, rating, specialty, startFollow from Player, FollowingPlayer where userID='$userID' and FollowingPlayer.playerID = Player.playerID";
+                   $result = mysqli_query($conn, $player_query);
+                   $count = mysqli_num_rows( $result );
+
+                   if($count > 0) {
+                        while($row = mysqli_fetch_row($result)) {
+                            echo "<p>";
+                                echo "Player Name: " . $row[0];
+                                echo "Rating: " . $row[1];
+                                echo "Specialty: " . $row[2];
+                                echo "Started Following: " . $row[3];
+                            echo "</p>";
+                        }
+                   } else {
+                            echo "<p>";
+                                echo "Not following anyone, start following below!";
+                            echo "</p>";
+                   }
+                ?>
+            <p><a class="btn btn-secondary" href="player.php" role="button">View More &raquo;</a></p>
           </div>
           <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            <h2>Following Teams</h2>
+               <?php
+                   $team_query = "select teamName, rating, startFollow from Team, FollowingTeam where userID='$userID' and FollowingTeam.teamID = Team.teamID";
+                   $team_result = mysqli_query($conn, $team_query);
+                   $count = mysqli_num_rows( $team_result );
+
+                   if($count > 0) {
+                        while($row = mysqli_fetch_row($team_result)) {
+                            echo "<p>";
+                                echo "Team Name: " . $row[0];
+                                echo "Rating: " . $row[1];
+                                echo "Started Following: " . $row[2];
+                            echo "</p>";
+                        }
+                   } else {
+                            echo "<p>";
+                                echo "Not following any Teams, start following below!";
+                            echo "</p>";
+                       
+
+                   }
+
+                ?>
+            <p><a class="btn btn-secondary" href="team.php" role="button">View More &raquo;</a></p>
           </div>
           <div class="col-md-4">
             <h2>Heading</h2>

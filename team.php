@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -41,7 +44,7 @@
         }
     // Retrieve name of table selected
 
-        $query = "SELECT teamName, rating FROM Team ";
+        $query = "SELECT teamName, rating, teamID FROM Team ";
 
         $result = mysqli_query($conn, $query);
         if (!$result) {
@@ -50,10 +53,22 @@
     // setup structure
         echo "<div class='container'>";
 
+        $userID = $_SESSION['userID'];
+
         while($row = mysqli_fetch_row($result)) {
             echo "<div class='row'>";
             echo "Team Name: " . $row[0];
             echo "Rating: " . $row[1];
+
+            $is_following = "Select * from FollowingTeam where teamID = $row[2] and userID = $userID";
+            $result_follow = mysqli_query($conn, $is_following);
+            $count_follow = mysqli_num_rows( $result_follow );
+            
+            if ($count_follow == 0){
+                echo "<p><a class='btn btn-primary' href='follow.php?genID=$row[2]&isplayer=false' role='button'>Follow Us!</a></p>";
+            } else {
+                echo "<p><a class='btn btn-secondary' href='stop_follow.php?genID=$row[2]&isplayer=false' role='button'>Stop Following!</a></p>";
+            }
             echo "<p><a class='btn btn-secondary' href='team_page.php?teamName=$row[0]' role='button'>View details &raquo;</a></p>";
             echo "</div>";
         }
