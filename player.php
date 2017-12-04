@@ -55,25 +55,31 @@
         echo "<div class='container'>";
 
         $userID = $_SESSION['userID'];
-
+	
+	echo "<table id = 't05' border = '1'><tr>";
+	echo "<td><b>Player Name</b></td>";
+	echo "<td><b>Rating</b></td>";
+	echo "<td><b>Specialty</b></td>";
+	echo "</tr>\n";
         while($row = mysqli_fetch_row($result)) {
-            echo "<div class='row'>";
-            echo "Player Name: " . $row[0];
-            echo "Rating: " . $row[1];
-            echo "Specialty: " . $row[2];
+            echo "<tr>";
+            foreach($row as $cell)
+		echo "<td>$cell</td>";
+
             $is_following = "Select * from FollowingPlayer where playerID = $row[3] and userID = $userID";
             $result_follow = mysqli_query($conn, $is_following);
             $count_follow = mysqli_num_rows( $result_follow );
             
             if ($count_follow == 0){
-                echo "<p><a class='btn btn-primary' href='follow.php?genID=$row[3]&isplayer=true' role='button'>Follow Me!</a></p>";
+                echo "<td><a class='btn btn-primary' href='follow.php?genID=$row[3]&isplayer=true' role='button'>Follow Me!</a></td>";
             } else {
-                echo "<p><a class='btn btn-secondary' href='stop_follow.php?genID=$row[3]&isplayer=true' role='button'>Stop Following!</a></p>";
+                echo "<td><a class='btn btn-secondary' href='stop_follow.php?genID=$row[3]&isplayer=true' role='button'>Stop Following!</a></td>";
             }
-            echo "<p><a class='btn btn-secondary' href='player_page.php?playerName=$row[0]' role='button'>View details &raquo;</a></p>";
-            echo "</div>";
-        }
+            echo "<td><a class='btn btn-secondary' href='player_page.php?playerName=$row[0]' role='button'>View details &raquo;</a></td>";
+            echo "</tr>\n";
 
+        }
+	echo "</table>";
         echo "</div> <!-- /container -->";
 
         mysqli_free_result($result);

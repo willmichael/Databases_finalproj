@@ -49,16 +49,23 @@
         echo "<div class='container'>";
 
         $userID = $_SESSION['userID'];
+	echo "<table id = 't03' border = '1'><tr>";
+	echo "<td><b>Tournament Name </b></td>";
+	echo "<td><b>Date</b></td>";
+	echo "<td><b>Location</b></td>";
+	echo "</tr>\n";
 
         while($row = mysqli_fetch_row($result)) {
             echo "<div class='row'>";
-            echo "Tournament name: " . $row[0];
-            echo "Tournament Date: " . $row[1];
-            echo "Tournament Location: " . $row[2];
+	    
+	    echo "<tr>";
+	    foreach($row as $cell)
+		echo "<td>$cell</td>";
 
-            echo "<p><a class='btn btn-secondary' href='MatchList.php?TournamentName=$row[0]' role='button'>View details &raquo;</a></p>";
-            echo "</div>";
+            echo "<td><a class='btn btn-secondary' href='MatchList.php?TournamentName=$row[0]' role='button'>View details &raquo;</a></td>";
+	    echo "</tr>\n";
         }
+	echo "</table>";
         echo "</div> <!-- /container -->";
 
         mysqli_free_result($result);
