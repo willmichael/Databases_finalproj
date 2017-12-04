@@ -27,7 +27,7 @@
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
         <div class="container">
-          <h1 class="display-3">Team Performance</h1>
+          <h1 class="display-3">Player Performance</h1>
         </div>
       </div>
 
@@ -49,18 +49,24 @@
         echo "<div class='container'>";
 
         $userID = $_SESSION['userID'];
-
+	
+	echo "<table id = 't01' border = '1'><tr>";
+	
+	echo "<td><b>Player Name</b></td>";
+	echo "<td><b>Roles</b></td>";
+	echo "<td><b>Kills</b></td>";
+	echo "<td><b>Deaths</b></td>";
+	echo "<td><b>Assists</b></td>";
+	echo "</tr>\n";
         while($row = mysqli_fetch_row($result)) {
-            echo "<div class='row'>";
-            echo "Player name: " . $row[0];
-            echo " Roles: " . $row[1];
-            echo " Kills: " . $row[2];
-            echo " Deaths: " . $row[3];
-            echo " Assists: " . $row[3];
-            echo "</div>";
-        }
+            	echo "<tr>";
+        	foreach($row as $cell)
+			echo "<td>$cell</td>";
+		echo "</tr>\n";
+	}
+	echo "</table>";
         echo "</div> <!-- /container -->";
-
+	
         mysqli_free_result($result);
         mysqli_close($conn);
     ?>

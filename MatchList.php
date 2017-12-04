@@ -50,15 +50,21 @@
 
         $userID = $_SESSION['userID'];
 
+	echo "<table id = 't02' border = '1'><tr>";
+	echo "<td><b>Team Name</b></td>";
+	echo "<td><b>Wins</b></td>";
+	echo "<td><b>Loses</b></td>";
+	echo "<td><b>Duration</b></td>";	
+
         while($row = mysqli_fetch_row($result)) {
-            echo "<div class='row'>";
-            echo "Team name: " . $row[0];
-            echo " Win: " . $row[1];
-            echo " Loss: " . $row[2];
-            echo " Duration: " . $row[3];
-            echo "<p><a class='btn btn-secondary' href='roles.php?teamName=$row[0]' role='button'>View details &raquo;</a></p>";
-            echo "</div>";
-        }
+        	echo "<tr>";
+		foreach($row as $cell)
+			echo "<td>$cell</td>"; 
+		
+		echo "<td><a class='btn btn-secondary' href='roles.php?teamName=$row[0]' role='button'>View details &raquo;</a></td>";	  			
+       		echo "</tr>\n";
+	 }	
+	echo "</table>";	
         echo "</div> <!-- /container -->";
 
         mysqli_free_result($result);
