@@ -28,34 +28,42 @@
       <div class="jumbotron">
         <div class="container">
           <h1 class="display-3">Tournament</h1>
-          <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-          <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
         </div>
       </div>
 
-      <div class="container">
-        <!-- Example row of columns -->
-        <div class="row">
-          <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-          </div>
-          <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-          </div>
-          <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-          </div>
-        </div>
+      <?php
+        include 'connectvarsEECS.php';
 
-        <hr>
+        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+        if (!$conn) {
+          die('Could not connect: ' . mysql_error());
+        }
 
-      </div> <!-- /container -->
+        $query = "SELECT name, date, Location FROM Tournament";
+
+        $result = mysqli_query($conn, $query);
+        if (!$result) {
+            die("Query to show fields from table failed");
+        }
+    // setup structure
+        echo "<div class='container'>";
+
+        $userID = $_SESSION['userID'];
+
+        while($row = mysqli_fetch_row($result)) {
+            echo "<div class='row'>";
+            echo "Tournament name: " . $row[0];
+            echo "Tournament Date: " . $row[1];
+            echo "Tournament Location: " . $row[2];
+
+            echo "<p><a class='btn btn-secondary' href='MatchList.php?TournamentName=$row[0]' role='button'>View details &raquo;</a></p>";
+            echo "</div>";
+        }
+        echo "</div> <!-- /container -->";
+
+        mysqli_free_result($result);
+        mysqli_close($conn);
+    ?>
 
     </main>
 
