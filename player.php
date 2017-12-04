@@ -44,7 +44,7 @@
         }
     // Retrieve name of table selected
 
-        $query = "SELECT playerName, rating, specialty FROM Player ";
+        $query = "SELECT playerName, rating, specialty, playerID FROM Player ";
 
         $result = mysqli_query($conn, $query);
         if (!$result) {
@@ -65,6 +65,7 @@
             echo "<tr>";
             foreach($row as $cell)
 		echo "<td>$cell</td>";
+
             $is_following = "Select * from FollowingPlayer where playerID = $row[3] and userID = $userID";
             $result_follow = mysqli_query($conn, $is_following);
             $count_follow = mysqli_num_rows( $result_follow );
@@ -76,6 +77,7 @@
             }
             echo "<td><a class='btn btn-secondary' href='player_page.php?playerName=$row[0]' role='button'>View details &raquo;</a></td>";
             echo "</tr>\n";
+
         }
 	echo "</table>";
         echo "</div> <!-- /container -->";

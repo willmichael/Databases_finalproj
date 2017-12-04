@@ -44,7 +44,7 @@
         }
     // Retrieve name of table selected
 
-        $query = "SELECT teamName, rating FROM Team ";
+        $query = "SELECT teamName, rating, teamID FROM Team ";
 
         $result = mysqli_query($conn, $query);
         if (!$result) {
@@ -55,6 +55,7 @@
 
         $userID = $_SESSION['userID'];
 
+
 	echo "<table id = 't04' border = '1'><tr>";
 	echo "<td><b>Team Name</b></td>";
 	echo "<td><b>Rating</b></td>";
@@ -63,6 +64,7 @@
             echo "<tr>";
             foreach($row as $cell)
 		echo "<td>$cell</td>";
+
 
             $is_following = "Select * from FollowingTeam where teamID = $row[2] and userID = $userID";
             $result_follow = mysqli_query($conn, $is_following);
@@ -75,6 +77,7 @@
             }
             echo "<td><a class='btn btn-secondary' href='team_page.php?teamName=$row[0]' role='button'>View details &raquo;</a></td>";
             echo "</tr>\n";
+
         }
 	echo "</table>";
         echo "</div> <!-- /container -->";
