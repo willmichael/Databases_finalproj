@@ -68,7 +68,13 @@
                         $pass = password_hash($pass, PASSWORD_DEFAULT);
                         list(, $hashalgo, $cost, $saltedpass) = explode('$', $pass);
                         $salt = substr($saltedpass, 0, 22);
-                        $query = "INSERT INTO User (userName, email, password, address, userPerm) VALUES ('$user', '$email', '$pass', '$addr', 0)";
+                        $query_max = "SELECT MAX(userID) from User";
+                        $result = mysqli_query($conn, $query_max);
+                        $row = mysqli_fetch_row($result);
+
+                        $userID = $row[0] + 1;
+                        
+                        $query = "INSERT INTO User (userID, userName, email, password, address, userPerm) VALUES ($userID, '$user', '$email', '$pass', '$addr', 0)";
                         if(mysqli_query($conn, $query)){
                             echo "Record added successfully.";
                         } else{
