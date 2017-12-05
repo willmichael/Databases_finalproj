@@ -18,8 +18,6 @@
     date_default_timezone_set("America/Los_Angeles");
     $today_date = date('Y-m-d');
 
-    echo $today_date;
-
 
     // start following player
     
