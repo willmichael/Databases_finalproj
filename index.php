@@ -59,7 +59,7 @@ include('session.php');
                                 echo "<td>$row[0]</td>";
                                 echo "<td>$row[1]</td>";
                                 echo "<td>$row[2]</td>";
-                                echo "<td><a class='btn btn-secondary' href='team_page.php?teamName=$row[0]' role='button'>&raquo;</a></td>";
+                                echo "<td><a class='btn btn-secondary' href='player_page.php?playerName=$row[0]' role='button'>&raquo;</a></td>";
                                 echo "</tr>";
                         }
                         echo "</table>";
