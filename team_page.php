@@ -42,27 +42,58 @@
             // Display team name up top
                 echo "<h1 class='display-3'>$team</h1>";
 
-            // check unique username
-                $query = "SELECT teamID, teamName, rating FROM Team WHERE teamName='$team'";
+                $query = "SELECT teamID, rating FROM Team WHERE teamName='$team'";
                 $result = mysqli_query($conn, $query);
                 $count = mysqli_num_rows( $result );
+
 
                 if ($count == 1) {
                 // attempt validate password
                     $row = mysqli_fetch_row($result);
-                    echo $row[0] . $row[1] . $row[2];
+                    echo "<h1 class='display-6'>Rating: $row[1]</h1>";
                 }
                 else {
                     echo "Could not find matching Team Sorry";
                 }
 
+                $teamID = $row[0];
+
+                echo "</div> </div> <div class='container'>";
+
+                $players_query = "SELECT playerName, rating, specialty FROM Player, PlaysIn WHERE teamID='$teamID' and Player.playerID = PlaysIn.playerID";
+                $player_result = mysqli_query($conn, $players_query);
+                $player_count = mysqli_num_rows( $player_result );
+
+                if ($player_count>0) {
+                    echo "<table id = 't05' border = '1'><tr>";
+                    echo "<td><b>Player Name</b></td>";
+                    echo "<td><b>Rating</b></td>";
+                    echo "<td><b>Specialty</b></td>";
+                    echo "</tr>\n";
+                        while($player_row = mysqli_fetch_row($player_result)) {
+                                echo "<tr>";
+                                echo "<td>$player_row[0]</td>";
+                                echo "<td>$player_row[1]</td>";
+                                echo "<td>$player_row[2]</td>";
+                                echo "<td><a class='btn btn-secondary' href='player_page.php?playerName=$player_row[0]' role='button'>&raquo;</a></td>";
+                                echo "</tr>";
+                        }
+                        echo "</table>";
+                } else {
+                    echo "No players on this team";
+                }
+
+
+
             // close connection
             mysqli_close($conn);
             ?>
         </div>
-      </div>
-
     </main>
+    <br>
+    <br>
+    <br>
+    <br>
 
     <footer class="container">
       <p>&copy; Michael Lee, Davian Lukman 2017</p>

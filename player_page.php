@@ -50,7 +50,8 @@
                 if ($count == 1) {
                 // attempt validate password
                     $row = mysqli_fetch_row($result);
-                    echo $row[0] . $row[1] . $row[2]. $row[3]. $row[4]. $row[5];
+                    echo "<h1 class='display-6'>Rating: $row[4]</h1>";
+                    echo "<h1 class='display-6'>Specialty: $row[5]</h1>";
                 }
                 else {
                     echo "Could not find matching player, sorry";
@@ -61,6 +62,19 @@
             ?>
         </div>
       </div>
+        <div class='container'>
+            <?php
+                if ($count == 1) {
+                    echo "<p>";
+                    echo "DOB: $row[3]";
+                    echo "</p>";
+
+                    echo "<p>";
+                    echo "BIO: $row[2]";
+                    echo "</p>";
+                }
+            ?>
+        </div>
 
     </main>
 
