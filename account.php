@@ -54,7 +54,7 @@ include('session.php');
                                 echo "Player Name: " . $row[0];
                                 echo "Rating: " . $row[1];
                                 echo "Specialty: " . $row[2];
-                                echo "Started Following: " . $row[3];
+                                //echo "Started Following: " . $row[3];
                             echo "</p>";
                         }
                    } else {
@@ -77,7 +77,7 @@ include('session.php');
                             echo "<p>";
                                 echo "Team Name: " . $row[0];
                                 echo "Rating: " . $row[1];
-                                echo "Started Following: " . $row[2];
+                                //echo "Started Following: " . $row[2];
                             echo "</p>";
                         }
                    } else {

@@ -59,11 +59,13 @@
 	echo "<table id = 't04' border = '1'><tr>";
 	echo "<td><b>Team Name</b></td>";
 	echo "<td><b>Rating</b></td>";
+	echo "<td><b>Team ID</b></td>";
 	echo "</tr>\n";
         while($row = mysqli_fetch_row($result)) {
             echo "<tr>";
-            foreach($row as $cell)
-		echo "<td>$cell</td>";
+            foreach($row as $cell) {
+                echo "<td>$cell</td>";
+            }
 
 
             $is_following = "Select * from FollowingTeam where teamID = $row[2] and userID = $userID";
