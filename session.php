@@ -15,7 +15,7 @@
     // not logged in redirect
     if(!isset($_SESSION['userName'])){
         mysqli_close($conn); 
-        header('Location: login.php'); 
+        header('Location: login.php?logged=false'); 
     }
 ?>
 

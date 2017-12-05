@@ -60,6 +60,7 @@
 	echo "<td><b>Player Name</b></td>";
 	echo "<td><b>Rating</b></td>";
 	echo "<td><b>Specialty</b></td>";
+	echo "<td><b>Player ID</b></td>";
 	echo "</tr>\n";
         while($row = mysqli_fetch_row($result)) {
             echo "<tr>";

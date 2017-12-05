@@ -27,7 +27,14 @@
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
         <div class="container">
-          <h1 class="display-3">Login</h1>
+          <?php
+             $logged = $_GET['logged'];
+             if($logged == "false") {
+              echo "<h1 class='display-4'>Please Login To Access the Homepage</h1>";
+             } else {
+              echo "<h1 class='display-3'>Login</h1>";
+             }
+            ?>
             <form action="checkUser.php" method="post">
                 <p>
                     <label for="user">Username: </label>
@@ -35,7 +42,7 @@
                 </p>
                 <p>
                     <label for="password">Password: </label>
-                    <input type="text" name="password" id="password">
+                    <input type="password" name="password" id="password">
                 </p>
                 <p>
                     <a class="nav-link" href="signup.php">Sign Up</a>

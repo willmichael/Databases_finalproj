@@ -33,7 +33,7 @@
             if(password_verify($pass, $row[0])) {
                 $_SESSION['userName'] = $user;
                 $_SESSION['userID'] = $row[1];
-                header('Location: Account.php'); 
+                header('Location: index.php'); 
             } 
         }
     }
