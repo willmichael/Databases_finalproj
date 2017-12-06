@@ -38,8 +38,8 @@
         if (!$conn) {
           die('Could not connect: ' . mysql_error());
         }
-
-        $query = "SELECT DISTINCT Player.playerName, Participation.Roles, Participation.kills, Participation.deaths, Participation.assists FROM Player, Participation, PlaysIn, MatchRecord, Team WHERE Player.playerID = Participation.playerID AND MatchRecord.matchID = Participation.matchID AND PlaysIn.teamID = Team.teamID";
+	$mID = mysqli_real_escape_string($conn, $_GET['matchID']);
+        $query = "SELECT DISTINCT Player.playerName, Participation.Roles, Participation.kills, Participation.deaths, Participation.assists FROM Player, Participation, PlaysIn, MatchRecord, Team WHERE Player.playerID = Participation.playerID AND Participation.matchID = '$mID' AND PlaysIn.teamID = Team.teamID";
 
         $result = mysqli_query($conn, $query);
         if (!$result) {

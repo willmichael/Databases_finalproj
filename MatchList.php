@@ -39,7 +39,8 @@
           die('Could not connect: ' . mysql_error());
         }
 
-        $query = "SELECT Team.teamName, MatchRecord.win, MatchRecord.loss, MatchRecord.matchTime FROM Tournament, Team, MatchRecord WHERE Team.teamID = MatchRecord.teamA AND MatchRecord.tournamentID = Tournament.tournamentID";
+	$id = mysqli_real_escape_string($conn, $_GET['TournamentID']);
+        $query = "SELECT DISTINCT MatchRecord.matchID, A.teamName, B.teamName, MatchRecord.win, MatchRecord.loss, MatchRecord.matchTime FROM Tournament, Team A, Team B, MatchRecord WHERE A.teamID = MatchRecord.teamA AND B.teamID = MatchRecord.teamB AND MatchRecord.tournamentID = '$id'";
 
         $result = mysqli_query($conn, $query);
         if (!$result) {
@@ -51,7 +52,9 @@
         $userID = $_SESSION['userID'];
 
 	echo "<table id = 't02' border = '1'><tr>";
-	echo "<td><b>Team Name</b></td>";
+	echo "<td><b>Match#</b></td>";
+	echo "<td><b>Team A</b></td>";
+	echo "<td><b>Team B</b></td>";
 	echo "<td><b>Wins</b></td>";
 	echo "<td><b>Loses</b></td>";
 	echo "<td><b>Duration</b></td>";	
@@ -61,7 +64,7 @@
 		foreach($row as $cell)
 			echo "<td>$cell</td>"; 
 		
-		echo "<td><a class='btn btn-secondary' href='roles.php?teamName=$row[0]' role='button'>View details &raquo;</a></td>";	  			
+		echo "<td><a class='btn btn-secondary' href='roles.php?matchID=$row[0]' role='button'>View details &raquo;</a></td>";	  			
        		echo "</tr>\n";
 	 }	
 	echo "</table>";	

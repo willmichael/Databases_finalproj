@@ -37,18 +37,18 @@
         <!-- Example row of columns -->
         <div class="row">
           <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <h2>A new Server is just created!</h2>
+            <p>Dear League of Legends player, the wait is over! We are proud to announced that we established a new server for Asia/Oceania and North America. We hope that player who belongs to those region can enjoy our game to their heart content  </p>
             <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
           </div>
           <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <h2>Maintenance</h2>
+            <p>Bug fixed on SQL Monday, December 4th 2017 at 1:00 - 6:00 AM (PST). Please log out at that time to prevent error in your account </p>
             <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
           </div>
           <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <h2>GGWPGGEZ Tournament E-sport</h2>
+            <p>New Tournament for veteran League of Legends player. Open registration at Wednesday, December 6th 2017 at 5:00 PM (PST) to December 31st 2017 at 5:00 PM (PST). We hope every League of Legends player will be able to enjoy the content of E-sport as we will stream the event on Twitch and Youtube Live. The tournmant will be hosted in California. See you there, Legends</p>
             <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
           </div>
         </div>
