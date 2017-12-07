@@ -39,7 +39,7 @@
           die('Could not connect: ' . mysql_error());
         }
 
-        $query = "SELECT name, date, Location FROM Tournament";
+        $query = "SELECT tournamentID, name, date, Location FROM Tournament";
 
         $result = mysqli_query($conn, $query);
         if (!$result) {
@@ -50,6 +50,7 @@
 
         $userID = $_SESSION['userID'];
 	echo "<table id = 't03' border = '1'><tr>";
+	echo "<td><b>ID</b></td>";
 	echo "<td><b>Tournament Name </b></td>";
 	echo "<td><b>Date</b></td>";
 	echo "<td><b>Location</b></td>";
@@ -62,7 +63,7 @@
 	    foreach($row as $cell)
 		echo "<td>$cell</td>";
 
-            echo "<td><a class='btn btn-secondary' href='MatchList.php?TournamentName=$row[0]' role='button'>View details &raquo;</a></td>";
+            echo "<td><a class='btn btn-secondary' href='MatchList.php?TournamentID=$row[0]' role='button'>View details &raquo;</a></td>";
 	    echo "</tr>\n";
         }
 	echo "</table>";
