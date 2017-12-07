@@ -28,8 +28,6 @@
       <div class="jumbotron">
         <div class="container">
           <h1 class="display-3">Home</h1>
-          <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-          <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
         </div>
       </div>
 
@@ -39,17 +37,17 @@
           <div class="col-md-4">
             <h2>A new Server is just created!</h2>
             <p>Dear League of Legends player, the wait is over! We are proud to announced that we established a new server for Asia/Oceania and North America. We hope that player who belongs to those region can enjoy our game to their heart content  </p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            <p><a class="btn btn-secondary" href="http://www.lolesports.com/en_US/" role="button">View details &raquo;</a></p>
           </div>
           <div class="col-md-4">
             <h2>Maintenance</h2>
             <p>Bug fixed on SQL Monday, December 4th 2017 at 1:00 - 6:00 AM (PST). Please log out at that time to prevent error in your account </p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            <p><a class="btn btn-secondary" href="about.php" role="button">View details &raquo;</a></p>
           </div>
           <div class="col-md-4">
             <h2>GGWPGGEZ Tournament E-sport</h2>
             <p>New Tournament for veteran League of Legends player. Open registration at Wednesday, December 6th 2017 at 5:00 PM (PST) to December 31st 2017 at 5:00 PM (PST). We hope every League of Legends player will be able to enjoy the content of E-sport as we will stream the event on Twitch and Youtube Live. The tournmant will be hosted in California. See you there, Legends</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            <p><a class="btn btn-secondary" href="http://www.lolesports.com/en_US/" role="button">View details &raquo;</a></p>
           </div>
         </div>
 
