@@ -25,9 +25,8 @@
         } else {
             $user_exists = false;
         }
+        mysqli_close($conn); 
     }
 
-
-    mysqli_close($conn); 
 ?>
 

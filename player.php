@@ -67,10 +67,11 @@ include('is_admin.php');
             foreach($row as $cell)
 		echo "<td>$cell</td>";
 
+           if($logged) { 
             $is_following = "Select * from FollowingPlayer where playerID = $row[3] and userID = $userID";
             $result_follow = mysqli_query($conn, $is_following);
             $count_follow = mysqli_num_rows( $result_follow );
-            
+           }
             if ($count_follow == 0){
                 echo "<td><a class='btn btn-primary' href='follow.php?genID=$row[3]&isplayer=true' role='button'>Follow Me!</a></td>";
             } else {
