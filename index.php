@@ -1,6 +1,3 @@
-<?php
-include('session.php');
-?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -30,9 +27,7 @@ include('session.php');
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
         <div class="container">
-          <?php
-            echo "<h1 class='display-3'>Welcome $user!</h1>";
-          ?>
+          <h1 class="display-3">Home</h1>
           <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
           <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
         </div>
@@ -42,65 +37,19 @@ include('session.php');
         <!-- Example row of columns -->
         <div class="row">
           <div class="col-md-4">
-            <h2>Following Players</h2>
-               <?php
-                   $player_query = "select playerName, rating, specialty, startFollow from Player, FollowingPlayer where userID='$userID' and FollowingPlayer.playerID = Player.playerID";
-                   $result = mysqli_query($conn, $player_query);
-                   $count = mysqli_num_rows( $result );
-
-                   if($count > 0) {
-                        echo "<table id = 't05' border = '1'><tr>";
-                        echo "<td><b>Player Name</b></td>";
-                        echo "<td><b>Rating</b></td>";
-                        echo "<td><b>Specialty</b></td>";
-                        echo "</tr>\n";
-                        while($row = mysqli_fetch_row($result)) {
-                                echo "<tr>";
-                                echo "<td>$row[0]</td>";
-                                echo "<td>$row[1]</td>";
-                                echo "<td>$row[2]</td>";
-                                echo "<td><a class='btn btn-secondary' href='player_page.php?playerName=$row[0]' role='button'>&raquo;</a></td>";
-                                echo "</tr>";
-                        }
-                        echo "</table>";
-                   } else {
-                            echo "<p>";
-                                echo "Not following anyone, start following below!";
-                            echo "</p>";
-                   }
-                ?>
-            </br>
-            <p><a class="btn btn-secondary" href="player.php" role="button">View More Players &raquo;</a></p>
+            <h2>Heading</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
           </div>
           <div class="col-md-4">
-            <h2>Following Teams</h2>
-               <?php
-                   $team_query = "select teamName, rating, startFollow from Team, FollowingTeam where userID='$userID' and FollowingTeam.teamID = Team.teamID";
-                   $team_result = mysqli_query($conn, $team_query);
-                   $count = mysqli_num_rows( $team_result );
-
-                   if($count > 0) {
-                        echo "<table id = 't04' border = '1'><tr>";
-                        echo "<td><b>Team Name</b></td>";
-                        echo "<td><b>Rating</b></td>";
-                        echo "</tr>\n";
-                        while($row = mysqli_fetch_row($team_result)) {
-                            echo "<tr>";
-                            echo "<td>$row[0]</td>";
-                            echo "<td>$row[1]</td>";
-                            echo "<td><a class='btn btn-secondary' href='team_page.php?teamName=$row[0]' role='button'>&raquo;</a></td>";
-                            echo "</tr>";
-                        }
-                        echo "</table>";
-                   } else {
-                            echo "<p>";
-                                echo "Not following any Teams, start following below!";
-                            echo "</p>";
-                   }
-
-                ?>
-            </br>
-            <p><a class="btn btn-secondary" href="team.php" role="button">View More Teams &raquo;</a></p>
+            <h2>Heading</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>Heading</h2>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
           </div>
         </div>
 
