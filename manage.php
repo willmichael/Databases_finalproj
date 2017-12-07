@@ -81,7 +81,7 @@
             <?php
                 if($userPerm == 1) {
                     echo "<p><a class='btn btn-primary btn-lg' href='add_player.php' role='button'>Add Player &raquo;</a></p>";
-                    echo "<p><a class='btn btn-primary btn-lg' href='add_player.php' role='button'>Add Player to Team &raquo;</a></p>";
+                    echo "<p><a class='btn btn-primary btn-lg' href='add_player_team.php' role='button'>Add Player to Team &raquo;</a></p>";
                     echo "<p><a class='btn btn-primary btn-lg' href='add_team.php' role='button'>Add Team &raquo;</a></p>";
                     echo "<p><a class='btn btn-primary btn-lg' href='add_tourn.php' role='button'>Add Tournament &raquo;</a></p>";
                 }

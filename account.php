@@ -51,12 +51,14 @@ include('session.php');
                         echo "<td><b>Player Name</b></td>";
                         echo "<td><b>Rating</b></td>";
                         echo "<td><b>Specialty</b></td>";
+                        echo "<td><b>Started Following</b></td>";
                         echo "</tr>\n";
                         while($row = mysqli_fetch_row($result)) {
                                 echo "<tr>";
                                 echo "<td>$row[0]</td>";
                                 echo "<td>$row[1]</td>";
                                 echo "<td>$row[2]</td>";
+                                echo "<td>$row[3]</td>";
                                 echo "<td><a class='btn btn-secondary' href='player_page.php?playerName=$row[0]' role='button'>&raquo;</a></td>";
                                 echo "</tr>";
                         }
@@ -81,11 +83,13 @@ include('session.php');
                         echo "<table id = 't04' border = '1'><tr>";
                         echo "<td><b>Team Name</b></td>";
                         echo "<td><b>Rating</b></td>";
+                        echo "<td><b>Started Following</b></td>";
                         echo "</tr>\n";
                         while($row = mysqli_fetch_row($team_result)) {
                             echo "<tr>";
                             echo "<td>$row[0]</td>";
                             echo "<td>$row[1]</td>";
+                            echo "<td>$row[2]</td>";
                             echo "<td><a class='btn btn-secondary' href='team_page.php?teamName=$row[0]' role='button'>&raquo;</a></td>";
                             echo "</tr>";
                         }

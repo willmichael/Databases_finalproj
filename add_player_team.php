@@ -1,6 +1,3 @@
-<?php
-include('is_admin.php');
-?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -30,56 +27,22 @@ include('is_admin.php');
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
         <div class="container">
-          <h1 class="display-3">Tournament</h1>
+            <h1 class='display-3'>Add Player to Team</h1>
+            <form action="add_player_team_action.php" method="post">
+                <p>
+                    <label for="user">Player Name: </label>
+                    <input type="text" name="player" id="player">
+                </p>
+                <p>
+                    <label for="special">Team Name: </label>
+                    <input type="text" name="team" id="team">
+                </p>
+                <input class="btn btn-primary btn-lg" type="submit" value="Submit">
+            </form>
         </div>
       </div>
-
-      <?php
-        include 'connectvarsEECS.php';
-
-        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-        if (!$conn) {
-          die('Could not connect: ' . mysql_error());
-        }
-
-        $query = "SELECT tournamentID, name, date, Location FROM Tournament";
-
-        $result = mysqli_query($conn, $query);
-        if (!$result) {
-            die("Query to show fields from table failed");
-        }
-    // setup structure
-        echo "<div class='container'>";
-
-        $userID = $_SESSION['userID'];
-	echo "<table id = 't03' border = '1'><tr>";
-	echo "<td><b>ID</b></td>";
-	echo "<td><b>Tournament Name </b></td>";
-	echo "<td><b>Date</b></td>";
-	echo "<td><b>Location</b></td>";
-	echo "</tr>\n";
-
-        while($row = mysqli_fetch_row($result)) {
-            echo "<div class='row'>";
-	    
-	    echo "<tr>";
-	    foreach($row as $cell)
-		echo "<td>$cell</td>";
-
-            echo "<td><a class='btn btn-secondary' href='MatchList.php?TournamentID=$row[0]' role='button'>View details &raquo;</a></td>";
-            if($userPerm == 1){
-            echo "<td><a class='btn btn-secondary' href='delete_entry.php?type=to&id=$row[0]' role='button'>&times;</a></td>";
-            }
-	    echo "</tr>\n";
-        }
-	echo "</table>";
-        echo "</div> <!-- /container -->";
-
-        mysqli_free_result($result);
-        mysqli_close($conn);
-    ?>
-
     </main>
+
 
     <footer class="container">
       <p>&copy; Michael Lee, Davian Lukman 2017</p>

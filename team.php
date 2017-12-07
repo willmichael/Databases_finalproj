@@ -1,5 +1,5 @@
 <?php
-    session_start();
+include('is_admin.php');
 ?>
 <!doctype html>
 <html lang="en">
@@ -78,6 +78,9 @@
                 echo "<td><a class='btn btn-secondary' href='stop_follow.php?genID=$row[2]&isplayer=false' role='button'>Stop Following!</a></td>";
             }
             echo "<td><a class='btn btn-secondary' href='team_page.php?teamName=$row[0]' role='button'>View details &raquo;</a></td>";
+            if($userPerm == 1){
+            echo "<td><a class='btn btn-secondary' href='delete_entry.php?type=te&id=$row[2]' role='button'>&times;</a></td>";
+            }
             echo "</tr>\n";
 
         }

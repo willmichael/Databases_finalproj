@@ -15,14 +15,14 @@
     // true or false; player or team
     $isplayer = mysqli_real_escape_string($conn, $_GET['isplayer']);
     $userID = $_SESSION['userID'];
-    date_default_timezone_set("America/Los_Angeles");
-    $today_date = date('Y-m-d');
+    date_default_timezone_set('America/Los_Angeles');
+    $today_date = date('Y-m-d', time());
 
 
     // start following player
     
     if($isplayer == "true") {
-        $query = "insert into FollowingPlayer (userID, playerID, startFollow) values ($userID, $genID, $today_date)";
+        $query = "insert into FollowingPlayer (userID, playerID, startFollow) values ($userID, $genID, '$today_date')";
 
         $result = mysqli_query($conn, $query);
 
@@ -33,7 +33,7 @@
             echo "Could not follow player";
         }
     } else {
-        $query = "insert into FollowingTeam (userID, teamID, startFollow) values ($userID, $genID, $today_date)";
+        $query = "insert into FollowingTeam (userID, teamID, startFollow) values ($userID, $genID, '$today_date')";
 
         $result = mysqli_query($conn, $query);
 

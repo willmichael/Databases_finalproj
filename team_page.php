@@ -1,3 +1,6 @@
+<?php
+include('is_admin.php');
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -60,7 +63,7 @@
 
                 echo "</div> </div> <div class='container'>";
 
-                $players_query = "SELECT playerName, rating, specialty FROM Player, PlaysIn WHERE teamID='$teamID' and Player.playerID = PlaysIn.playerID";
+                $players_query = "SELECT playerName, rating, specialty, Player.playerID FROM Player, PlaysIn WHERE teamID='$teamID' and Player.playerID = PlaysIn.playerID";
                 $player_result = mysqli_query($conn, $players_query);
                 $player_count = mysqli_num_rows( $player_result );
 
@@ -76,6 +79,9 @@
                                 echo "<td>$player_row[1]</td>";
                                 echo "<td>$player_row[2]</td>";
                                 echo "<td><a class='btn btn-secondary' href='player_page.php?playerName=$player_row[0]' role='button'>&raquo;</a></td>";
+                                if($userPerm == 1){
+                                echo "<td><a class='btn btn-secondary' href='delete_entry.php?type=pi&id=$player_row[3]' role='button'>&times;</a></td>";
+                                }
                                 echo "</tr>";
                         }
                         echo "</table>";
