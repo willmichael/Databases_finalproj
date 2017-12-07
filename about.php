@@ -28,12 +28,14 @@
       <div class="jumbotron">
         <div class="container">
           <h1 class="display-3">All About Us</h1>
-          <p>Use this website to find teams to follow</p>
         </div>
       </div>
-
-
     </main>
+
+    <div class="container">
+          <p>Use this website to find teams to follow</p>
+        
+    </div>
 
     <footer class="container">
       <p>&copy; Michael Lee, Davian Lukman 2017</p>

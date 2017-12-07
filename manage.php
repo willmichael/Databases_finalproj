@@ -60,9 +60,9 @@
                 if($logged && $user_exists) {
                     if($userPerm == 1) {
                         echo "<h1 class='display-4'>Manage</h1>";
-                        echo "<p><a class='btn btn-primary btn-lg' href='add_player.php' role='button'>Add Player &raquo;</a></p>";
-                        echo "<p><a class='btn btn-primary btn-lg' href='add_team.php' role='button'>Add Team &raquo;</a></p>";
-                        echo "<p><a class='btn btn-primary btn-lg' href='add_tourn.php' role='button'>Add Tournament &raquo;</a></p>";
+                        //echo "<p><a class='btn btn-primary btn-lg' href='add_player.php' role='button'>Add Player &raquo;</a></p>";
+                        //echo "<p><a class='btn btn-primary btn-lg' href='add_team.php' role='button'>Add Team &raquo;</a></p>";
+                        //echo "<p><a class='btn btn-primary btn-lg' href='add_tourn.php' role='button'>Add Tournament &raquo;</a></p>";
                     } else {
                         //insufficient permissions
                         echo "<h1 class='display-4'>Insufficient Permissions, this is only available to admins</h1>";
@@ -75,7 +75,25 @@
             ?>
         </div>
       </div>
+
+
+      <div class="container">
+            <?php
+                if($userPerm == 1) {
+                    echo "<p><a class='btn btn-primary btn-lg' href='add_player.php' role='button'>Add Player &raquo;</a></p>";
+                    echo "<p><a class='btn btn-primary btn-lg' href='add_player.php' role='button'>Add Player to Team &raquo;</a></p>";
+                    echo "<p><a class='btn btn-primary btn-lg' href='add_team.php' role='button'>Add Team &raquo;</a></p>";
+                    echo "<p><a class='btn btn-primary btn-lg' href='add_tourn.php' role='button'>Add Tournament &raquo;</a></p>";
+                }
+            ?>
+      </div>
     </main>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
 
 
     <footer class="container">

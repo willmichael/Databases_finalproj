@@ -35,6 +35,10 @@
               echo "<h1 class='display-3'>Login</h1>";
              }
             ?>
+        </div>
+      </div>
+
+      <div class="container">
             <form action="checkUser.php" method="post">
                 <p>
                     <label for="user">Username: </label>
@@ -49,11 +53,15 @@
                 </p>
                 <input class="btn btn-primary btn-lg" type="submit" value="Submit">
             </form>
-        </div>
       </div>
+
+
     </main>
 
 
+    <br>
+    <br>
+    <br>
     <footer class="container">
       <p>&copy; Michael Lee, Davian Lukman 2017</p>
     </footer>
